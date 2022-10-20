@@ -7,5 +7,5 @@ puts @blank.welcome_message
 
 @blank.index
 
-
+player_one_move
 

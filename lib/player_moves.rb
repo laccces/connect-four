@@ -1,4 +1,6 @@
 def player_one_move
+  puts  "Please enter a number between 1 and 7."
+
   player_one_choice = gets.to_i
 
   case player_one_choice
