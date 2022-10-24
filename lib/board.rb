@@ -1,6 +1,6 @@
 class Board
   def initialize
-    @grid = Array.new(6) { Array.new(7, '   ') }
+    @grid = Array.new(6) { Array.new(7, ' ') }
   end
 
   def welcome_message
@@ -13,13 +13,13 @@ class Board
   end
 
   def index
-    divider = "------------------------------------"
+    divider = "-----------------------------"
 
     puts "Here's the board:"
     puts divider
-    puts "| #{@grid[0][0]}  | #{@grid[0][1]}  | #{@grid[0][2]}  | #{@grid[0][3]}  | #{@grid[0][4]}  | #{@grid[0][5]}  | #{@grid[0][6]}  |"
+    puts "| #{@grid[0][0]} | #{@grid[0][1]} | #{@grid[0][2]} | #{@grid[0][3]} | #{@grid[0][4]} | #{@grid[0][5]} | #{@grid[0][6]} |"
     puts divider
-    puts "| #{@grid[1][0]}  | #{@grid[1][1]}  | #{@grid[1][2]} | #{@grid[1][3]} | #{@grid[1][4]} | #{@grid[1][5]} | #{@grid[1][6]} |"
+    puts "| #{@grid[1][0]} | #{@grid[1][1]} | #{@grid[1][2]} | #{@grid[1][3]} | #{@grid[1][4]} | #{@grid[1][5]} | #{@grid[1][6]} |"
     puts divider
     puts "| #{@grid[2][0]} | #{@grid[2][1]} | #{@grid[2][2]} | #{@grid[2][3]} | #{@grid[2][4]} | #{@grid[2][5]} | #{@grid[2][6]} |"
     puts divider
@@ -29,6 +29,7 @@ class Board
     puts divider
     puts "| #{@grid[5][0]} | #{@grid[5][1]} | #{@grid[5][2]} | #{@grid[5][3]} | #{@grid[5][4]} | #{@grid[5][5]} | #{@grid[5][6]} |"
     puts divider
+    puts "  1   2   3   4   5   6   7"
   end
 
 
