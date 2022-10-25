@@ -2,7 +2,7 @@ class Board
   attr_reader :grid
   
   def initialize
-    @grid = Array.new(6) { Array.new(7, ' ') }
+    @grid = Array.new(6) { Array.new(7, '-') }
   end
 
   def welcome_message
@@ -38,24 +38,32 @@ class Board
     puts  "Please enter a number between 1 and 7."
   
     player_one_choice = gets.to_i
-  
+
+    row = 0
+    column = (player_one_choice - 1)
+    num = 5
+    i = -1
+    
     case player_one_choice
       when 1
-        row = 0
-        column = (player_one_choice - 1)
-        num = 5
-
-        # write a loop that checks where the empty square is
-        # does @grid[num][column] = nil? if so, return num
-        # if not, num -= 1
-        # then @grid[num][column] = "X"
-        # if @grid[0][0] == "X", print "That column is full, please choose another."
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "X"
+        end
+        
       end
-
-
-      else 
-        puts "Error."
+    
     end
   end
-end
+
+
 
