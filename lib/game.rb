@@ -4,7 +4,7 @@ puts @board = Board.new
 
 puts @board.welcome_message
 
-6.times do
+8.times do
   @board.index
   @board.player_one_move
   @board.index
