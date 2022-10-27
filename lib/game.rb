@@ -8,4 +8,5 @@ puts @board.welcome_message
   @board.index
   @board.player_one_move
   @board.index
+  @board.player_two_move
 end
