@@ -35,7 +35,7 @@ class Board
   end
 
   def player_one_move
-    puts  "Please enter a number between 1 and 7."
+    puts  "Player 1, please enter a number between 1 and 7."
   
     player_one_choice = gets.to_i
 
@@ -47,7 +47,7 @@ class Board
     case player_one_choice
       when 1
         if @grid[row][column] != "-"
-          puts "This column is full, sorry."
+          puts "This column is full, sorry. Please choose another column."
           i = 1
         end
         
@@ -59,9 +59,209 @@ class Board
           end
           @grid[i][column] = "X"
         end
+      when 2
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
         
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "X"
+        end
+      when 3
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "X"
+        end
+      when 4
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "X"
+        end
+      when 5
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "X"
+        end
+      when 6
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "X"
+        end
+      when 7
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "X"
+        end
       end
+    end
     
+  def player_two_move
+    puts  "Player 2, please enter a number between 1 and 7."
+  
+    player_two_choice = gets.to_i
+
+    row = 0
+    column = (player_two_choice - 1)
+    num = 5
+    i = -1
+    
+    case player_two_choice
+      when 1
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "O"
+        end
+      
+      when 2
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "O"
+        end
+      
+      when 3
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "O"
+        end
+      
+      when 4
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "O"
+        end
+      
+      when 5
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "O"
+        end
+      
+      when 6
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "O"
+        end
+      
+      when 7
+        if @grid[row][column] != "-"
+          puts "This column is full, sorry. Please choose another column."
+          i = 1
+        end
+        
+        until i >= 0
+          if @grid[num][column] == "-"
+            i = num
+          else
+            num -=1
+          end
+          @grid[i][column] = "O"
+        end
+      end
     end
   end
 
