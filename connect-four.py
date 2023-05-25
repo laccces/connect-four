@@ -18,15 +18,21 @@ def player_one_turn():
     if player_selection < 1 or player_selection > 7:
         print("Error, please enter a number between 1 and 7.")
     
-    row = 5
+    
     column = (player_selection - 1)
+    row = 5
+    i = 0
 
-    while row > 0:
-        if board[row][column] == ".":
-            board[row][column] = "X"
-            row = -1
-        else: row - 1
-
+    while i < 6:
+        if board[row][column] != '.':
+            row -= 1
+            i += 1
+        else: 
+            board[row][column] = 'X'
+            break
+    
+    if i == 6:
+        print("That column is full, please choose another")
     
 player_one_turn()
 
@@ -35,4 +41,3 @@ print_board()
 player_one_turn()
 
 print_board()
-
