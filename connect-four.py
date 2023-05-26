@@ -13,12 +13,14 @@ def print_board():
 print_board()
 
 def player_one_turn():
-    player_selection = int(input("Where would you like to move? Enter a column from 1 to 7. "))
-    
-    if player_selection < 1 or player_selection > 7:
+    while True:
+        player_selection = input("Where would you like to move? Enter a column number from 1 to 7. ")
+        if player_selection.isdigit():
+            player_selection = int(player_selection)
+            if 1 <= player_selection <= 7:
+                break
         print("Error, please enter a number between 1 and 7.")
-    
-    
+
     column = (player_selection - 1)
     row = 5
     i = 0
@@ -34,10 +36,77 @@ def player_one_turn():
     if i == 6:
         print("That column is full, please choose another")
     
-player_one_turn()
+def player_two_turn():
+    while True:
+        player_selection = input("Where would you like to move? Enter a column number from 1 to 7. ")
+        if player_selection.isdigit():
+            player_selection = int(player_selection)
+            if 1 <= player_selection <= 7:
+                break
+        print("Error, please enter a number between 1 and 7.")
 
-print_board()
+    column = (player_selection - 1)
+    row = 5
+    i = 0
 
-player_one_turn()
+    while i < 6:
+        if board[row][column] != '.':
+            row -= 1
+            i += 1
+        else: 
+            board[row][column] = '0'
+            break
+    
+    if i == 6:
+        print("That column is full, please choose another")
 
-print_board()
+
+def check_win(board):
+# check horizontal spaces
+    for row in range(len(board)):
+        for col in range(len(board[0]) - 3):
+            if board[row][col] == board[row][col + 1] == board[row][col + 2] == board[row][col + 3] != '.':
+                return True
+
+    # check vertical spaces
+    for row in range(len(board) - 3):
+        for col in range(len(board[0])):
+            if board[row][col] == board[row + 1][col] == board[row + 2][col] == board[row + 3][col] != '.':
+                return True
+
+    # check / diagonal spaces
+    for row in range(len(board) - 3):
+        for col in range(len(board[0]) - 3):
+            if board[row][col] == board[row + 1][col + 1] == board[row + 2][col + 2] == board[row + 3][col + 3] != '.':
+                return True
+
+    # check \ diagonal spaces
+    for row in range(3, len(board)):
+        for col in range(len(board[0]) - 3):
+            if board[row][col] == board[row - 1][col + 1] == board[row - 2][col + 2] == board[row - 3][col + 3] != '.':
+                return True
+
+    return False
+
+
+def play_game():
+    while True:
+        player_one_turn()
+        
+        game_over = check_win(board)
+        if game_over == True:
+            print_board()
+            print("Player One wins!")
+            break
+        else: print_board()
+
+        player_two_turn()
+        
+        game_over = check_win(board)
+        if game_over == True:
+            print_board()
+            print("Player Two wins!")
+            break
+        else: print_board()
+
+play_game()
