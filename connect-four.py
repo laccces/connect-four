@@ -23,47 +23,40 @@ def player_one_turn():
         if player_selection.isdigit():
             player_selection = int(player_selection)
             if 1 <= player_selection <= 7:
-                break
-        print("Error, please enter a number between 1 and 7.")
+                column = (player_selection - 1)
+                row = 5
 
-    column = (player_selection - 1)
-    row = 5
-    i = 0
+                if board[0][column] == '.':
+                    while row >= 0:
+                        if board[row][column] == '.':
+                            board[row][column] = 'X'
+                            return
+                        row -= 1
+                else:
+                    print("That column is full, please choose another.")
+        else:
+            print("Error, please enter a number between 1 and 7.")
 
-    while i < 6:
-        if board[row][column] != '.':
-            row -= 1
-            i += 1
-        else: 
-            board[row][column] = 'X'
-            break
     
-    if i == 6:
-        print("That column is full, please choose another")
-    
-def player_two_turn():
+def player_one_turn():
     while True:
-        player_selection = input(player_two + ", where would you like to move? Enter a column number from 1 to 7. ")
+        player_selection = input(player_one + ", where would you like to move? Enter a column number from 1 to 7. ")
         if player_selection.isdigit():
             player_selection = int(player_selection)
             if 1 <= player_selection <= 7:
-                break
-        print("Error, please enter a number between 1 and 7.")
+                column = (player_selection - 1)
+                row = 5
 
-    column = (player_selection - 1)
-    row = 5
-    i = 0
-
-    while i < 6:
-        if board[row][column] != '.':
-            row -= 1
-            i += 1
-        else: 
-            board[row][column] = '0'
-            break
-    
-    if i == 6:
-        print("That column is full, please choose another")
+                if board[0][column] == '.':
+                    while row >= 0:
+                        if board[row][column] == '.':
+                            board[row][column] = 'O'
+                            return
+                        row -= 1
+                else:
+                    print("That column is full, please choose another.")
+        else:
+            print("Error, please enter a number between 1 and 7.")
 
 
 def check_win(board):
