@@ -17,9 +17,9 @@ def print_board():
 
 print_board()
 
-def player_one_turn():
+def get_player_move(player, symbol):
     while True:
-        player_selection = input(player_one + ", where would you like to move? Enter a column number from 1 to 7. ")
+        player_selection = input(player + ", where would you like to move? Enter a column number from 1 to 7. ")
         if player_selection.isdigit():
             player_selection = int(player_selection)
             if 1 <= player_selection <= 7:
@@ -29,35 +29,13 @@ def player_one_turn():
                 if board[0][column] == '.':
                     while row >= 0:
                         if board[row][column] == '.':
-                            board[row][column] = 'X'
+                            board[row][column] = symbol
                             return
                         row -= 1
                 else:
                     print("That column is full, please choose another.")
         else:
             print("Error, please enter a number between 1 and 7.")
-
-    
-def player_one_turn():
-    while True:
-        player_selection = input(player_one + ", where would you like to move? Enter a column number from 1 to 7. ")
-        if player_selection.isdigit():
-            player_selection = int(player_selection)
-            if 1 <= player_selection <= 7:
-                column = (player_selection - 1)
-                row = 5
-
-                if board[0][column] == '.':
-                    while row >= 0:
-                        if board[row][column] == '.':
-                            board[row][column] = 'O'
-                            return
-                        row -= 1
-                else:
-                    print("That column is full, please choose another.")
-        else:
-            print("Error, please enter a number between 1 and 7.")
-
 
 def check_win(board):
 # check horizontal spaces
@@ -86,25 +64,37 @@ def check_win(board):
 
     return False
 
+def is_board_full(board):
+    for row in board:
+        for cell in row:
+            if cell == '.':
+                return False
+    return True
 
 def play_game():
     while True:
-        player_one_turn()
-        
-        game_over = check_win(board)
-        if game_over == True:
-            print_board()
+        # Player 1's turn
+        get_player_move(player_one, 'X')
+        print_board()
+
+        if is_board_full(board):
+            print("It's a draw!")
+            break
+
+        if check_win(board):
             print(player_one + " wins!")
             break
-        else: print_board()
 
-        player_two_turn()
-        
-        game_over = check_win(board)
-        if game_over == True:
-            print_board()
+        # Player 2's turn
+        get_player_move(player_two, 'O')
+        print_board()
+
+        if is_board_full(board):
+            print("It's a draw!")
+            break
+
+        if check_win(board):
             print(player_two + " wins!")
             break
-        else: print_board()
 
 play_game()
