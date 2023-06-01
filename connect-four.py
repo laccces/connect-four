@@ -1,3 +1,8 @@
+print("Connect Four. Get four in a row vertically, horizontally or diagonally before your opponent to win.")
+
+player_one = input("Player 1, enter your name: ")
+player_two = input("Player 2, enter your name: ")
+
 board = [['.' for _ in range(7)] for _ in range(6)]
 
 divider = "-----------------------------"
@@ -14,7 +19,7 @@ print_board()
 
 def player_one_turn():
     while True:
-        player_selection = input("Where would you like to move? Enter a column number from 1 to 7. ")
+        player_selection = input(player_one + ", where would you like to move? Enter a column number from 1 to 7. ")
         if player_selection.isdigit():
             player_selection = int(player_selection)
             if 1 <= player_selection <= 7:
@@ -38,7 +43,7 @@ def player_one_turn():
     
 def player_two_turn():
     while True:
-        player_selection = input("Where would you like to move? Enter a column number from 1 to 7. ")
+        player_selection = input(player_two + ", where would you like to move? Enter a column number from 1 to 7. ")
         if player_selection.isdigit():
             player_selection = int(player_selection)
             if 1 <= player_selection <= 7:
@@ -96,7 +101,7 @@ def play_game():
         game_over = check_win(board)
         if game_over == True:
             print_board()
-            print("Player One wins!")
+            print(player_one + " wins!")
             break
         else: print_board()
 
@@ -105,7 +110,7 @@ def play_game():
         game_over = check_win(board)
         if game_over == True:
             print_board()
-            print("Player Two wins!")
+            print(player_two + " wins!")
             break
         else: print_board()
 
