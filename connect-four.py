@@ -1,13 +1,11 @@
-print("Connect Four. Get four in a row vertically, horizontally or diagonally before your opponent to win.")
-
-player_one = input("Player 1, enter your name: ")
-player_two = input("Player 2, enter your name: ")
+def reset_board():
+    return [['.' for _ in range(7)] for _ in range(6)]
 
 board = [['.' for _ in range(7)] for _ in range(6)]
 
 divider = "-----------------------------"
 
-def print_board():
+def print_board(board):
     print("Here's the board:")
     print(divider)
     for row in board:
@@ -15,9 +13,7 @@ def print_board():
         print(divider)
     print("  1   2   3   4   5   6   7")
 
-print_board()
-
-def get_player_move(player, symbol):
+def get_player_move(player, symbol, board):
     while True:
         player_selection = input(player + ", where would you like to move? Enter a column number from 1 to 7. ")
         if player_selection.isdigit():
@@ -71,11 +67,11 @@ def is_board_full(board):
                 return False
     return True
 
-def play_game():
+def play_game(board, player_one, player_two):
     while True:
         # Player 1's turn
-        get_player_move(player_one, 'X')
-        print_board()
+        get_player_move(player_one, 'X', board)
+        print_board(board)
 
         if is_board_full(board):
             print("It's a draw!")
@@ -86,8 +82,8 @@ def play_game():
             break
 
         # Player 2's turn
-        get_player_move(player_two, 'O')
-        print_board()
+        get_player_move(player_two, 'O', board)
+        print_board(board)
 
         if is_board_full(board):
             print("It's a draw!")
@@ -97,4 +93,22 @@ def play_game():
             print(player_two + " wins!")
             break
 
-play_game()
+def main():
+    print("Connect Four. Get four in a row vertically, horizontally or diagonally before your opponent to win.")
+    player_one = input("Player 1, enter your name: ")
+    player_two = input("Player 2, enter your name: ")
+    
+
+    while True:
+        board = reset_board()
+        print_board(board)
+        play_game(board, player_one, player_two)
+
+        play_again = input("Would you like to play again? (Yes/No) ")
+
+        if play_again.lower() != 'yes':
+            break
+    print("Okay, see you again soon.")
+
+if __name__ == "__main__":
+    main()
